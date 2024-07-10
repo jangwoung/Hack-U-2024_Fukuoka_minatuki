@@ -2,6 +2,7 @@ import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { Inter } from 'next/font/google'
 
 import Header from '@/components/layouts/header'
+import SideBar from '@/components/layouts/sidebar'
 
 import type { Metadata } from 'next'
 import './globals.css'
@@ -23,7 +24,8 @@ export default function RootLayout({
       <body className={inter.className}>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
           <Header />
-          {children}
+          <SideBar />
+          <div className="pt-16">{children}</div>
         </AppRouterCacheProvider>
       </body>
     </html>
