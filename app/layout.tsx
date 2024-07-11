@@ -4,9 +4,11 @@ import { Inter } from 'next/font/google'
 import ClientModal from '@/components/elements/modal/ClientModal'
 import LoginElement from '@/components/elements/modal/modal_elements/login_ele'
 import Header from '@/components/layouts/header'
+import MainContent from '@/components/layouts/main_content'
 import SideBar from '@/components/layouts/sidebar'
 
 import { ModalProvider } from '@/features/hooks/ModalContext'
+import { SideBarProvider } from '@/features/hooks/SideBarContext'
 
 import type { Metadata } from 'next'
 
@@ -33,8 +35,10 @@ export default function RootLayout({
               <LoginElement />
             </ClientModal>
             <Header />
-            <SideBar />
-            <div className="pt-16">{children}</div>
+            <SideBarProvider>
+              <SideBar />
+              <MainContent>{children}</MainContent>
+            </SideBarProvider>
           </ModalProvider>
         </AppRouterCacheProvider>
       </body>
