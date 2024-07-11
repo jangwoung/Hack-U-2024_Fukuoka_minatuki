@@ -12,10 +12,11 @@ const config: Config = {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
         'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
       },
-    },
-    colors: {
-      'main-blue': '#2196F3',
-      'deep-blue': '#0072B0',
+      colors: {
+        'main-blue': '#2196F3',
+        'deep-blue': '#0072B0',
+        'base-black': '#030303',
+      },
     },
   },
   plugins: [],

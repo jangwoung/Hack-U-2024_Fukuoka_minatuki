@@ -1,10 +1,15 @@
 import { AppRouterCacheProvider } from '@mui/material-nextjs/v13-appRouter'
 import { Inter } from 'next/font/google'
 
+import ClientModal from '@/components/elements/modal/ClientModal'
+import LoginElement from '@/components/elements/modal/modal_elements/login_ele'
 import Header from '@/components/layouts/header'
 import SideBar from '@/components/layouts/sidebar'
 
+import { ModalProvider } from '@/features/hooks/ModalContext'
+
 import type { Metadata } from 'next'
+
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'] })
@@ -21,11 +26,16 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="jp">
-      <body className={inter.className}>
+      <body className={`${inter.className} text-base-black`}>
         <AppRouterCacheProvider options={{ enableCssLayer: true }}>
-          <Header />
-          <SideBar />
-          <div className="pt-16">{children}</div>
+          <ModalProvider>
+            <ClientModal>
+              <LoginElement />
+            </ClientModal>
+            <Header />
+            <SideBar />
+            <div className="pt-16">{children}</div>
+          </ModalProvider>
         </AppRouterCacheProvider>
       </body>
     </html>
