@@ -11,7 +11,7 @@ export default function Header() {
   const { openModal } = useModal()
 
   return (
-    <div className="fixed grid h-[64px] w-screen grid-cols-12 items-center gap-5 px-10 shadow-sm">
+    <div className="fixed top-0 z-40 grid h-[64px] w-svw grid-cols-12 items-center gap-5 bg-white shadow-sm">
       <div className="col-span-2 text-center text-2xl">
         <Link href="/">
           <h1>LOGO</h1>
@@ -30,7 +30,10 @@ export default function Header() {
             <h1>マイページ</h1>
           </Link>
         ) : (
-          <button onClick={openModal}>
+          <button
+            className="rounded-md px-4 py-2 font-bold duration-200 hover:bg-main-blue hover:text-white"
+            onClick={openModal}
+          >
             <h1>ログイン</h1>
           </button>
         )}

@@ -14,9 +14,9 @@ export default function ClientModal({ children }: ModalProps) {
   return (
     <div>
       {isOpen && (
-        <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center">
+        <div className="fixed left-0 top-0 z-50 flex h-screen w-screen items-center justify-center">
           <div
-            className="absolute left-0 top-0 z-40 h-screen w-screen bg-black opacity-40"
+            className="absolute left-0 top-0 z-50 h-screen w-screen bg-black opacity-40"
             onClick={closeModal}
           ></div>
           <div className="relative z-50 flex min-h-[40vh] w-[50vw] flex-col items-center justify-center rounded-lg bg-white p-4">
