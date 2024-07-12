@@ -2,12 +2,14 @@
 
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import Link from 'next/link'
-import { useState } from 'react'
 
 import { useModal } from '@/features/hooks/ModalContext'
 
-export default function Header() {
-  const [loginState, setLoginState] = useState(false)
+type Props = {
+  UserName: string
+}
+
+export default function HeaderClient({ UserName }: Props) {
   const { openModal } = useModal()
 
   return (
@@ -18,16 +20,10 @@ export default function Header() {
         </Link>
       </div>
       <div className="col-span-2 col-start-11 text-center">
-        {loginState ? (
-          <Link
-            href="/mypage"
-            onClick={() => {
-              setLoginState(false)
-              console.log(loginState)
-            }}
-          >
-            <AccountCircleIcon />
-            <h1>マイページ</h1>
+        {UserName !== 'ログイン' ? (
+          <Link className="flex justify-center" href="/mypage">
+            <AccountCircleIcon className="mr-2" />
+            <h1>{UserName}</h1>
           </Link>
         ) : (
           <button

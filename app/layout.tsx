@@ -3,7 +3,7 @@ import { Inter } from 'next/font/google'
 
 import ClientModal from '@/components/elements/modal/ClientModal'
 import LoginElement from '@/components/elements/modal/modal_elements/login_ele'
-import Header from '@/components/layouts/header'
+import HeaderServer from '@/components/layouts/Header/header-server'
 import MainContent from '@/components/layouts/main_content'
 import SideBar from '@/components/layouts/sidebar'
 
@@ -34,7 +34,7 @@ export default function RootLayout({
             <ClientModal>
               <LoginElement />
             </ClientModal>
-            <Header />
+            <HeaderServer />
             <SideBarProvider>
               <SideBar />
               <MainContent>{children}</MainContent>
