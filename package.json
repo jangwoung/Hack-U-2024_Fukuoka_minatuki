@@ -18,16 +18,20 @@
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
     "@mui/icons-material": "^5.16.0",
-    "@mui/material": "^5.16.0",
+    "@mui/material": "^5.16.1",
     "@mui/material-nextjs": "^5.15.11",
+    "@mui/styled-engine-sc": "^6.0.0-alpha.18",
+    "@mui/x-date-pickers": "^7.10.0",
     "@supabase/supabase-js": "^2.44.3",
     "@types/next-auth": "^3.15.0",
     "axios": "^1.7.2",
+    "dayjs": "^1.11.11",
     "jsonwebtoken": "^9.0.2",
     "next": "^14.2.4",
     "next-auth": "^5.0.0-beta.19",
     "react": "^18.3.1",
-    "react-dom": "^18.3.1"
+    "react-dom": "^18.3.1",
+    "styled-components": "^6.1.11"
   },
   "devDependencies": {
     "@secretlint/secretlint-rule-preset-recommend": "^8.2.4",
