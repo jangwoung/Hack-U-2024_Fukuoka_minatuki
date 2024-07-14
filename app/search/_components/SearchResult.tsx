@@ -1,6 +1,6 @@
-import { SimpleHackathonInfo } from '@/features/types'
+import { Hackathon } from '@/features/types'
 
-export default function SearchResult({ Data }: { Data: SimpleHackathonInfo[] }) {
+export default function SearchResult({ Data }: { Data: Hackathon[] }) {
   return (
     <div className="my-16 grid w-[76svw] grid-cols-12 gap-x-3 gap-y-10 px-8">
       {Data.map((item, index) => (
@@ -12,7 +12,7 @@ export default function SearchResult({ Data }: { Data: SimpleHackathonInfo[] }) 
           <div className="w-10/12 text-center">
             <h1 className="text-lg font-bold">{item.title}</h1>
             <p className="text-sm">{item.description}</p>
-            <p className="text-sm text-gray-500">{item.date}</p>
+            <p className="text-sm text-gray-500">{item.kick_off_date}</p>
           </div>
         </div>
       ))}
