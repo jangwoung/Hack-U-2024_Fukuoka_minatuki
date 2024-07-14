@@ -12,7 +12,7 @@ export default function MainContent({ children }: ModalProps) {
 
   return (
     <div
-      className={`mt-[64px] min-h-[calc(100vh-64px)] p-10 duration-300 ${isSideBarOpen ? 'ml-[16vw] w-[80vw] duration-300' : 'ml-0 w-screen'}`}
+      className={`mt-[64px] min-h-[calc(100vh-64px)] duration-300 ${isSideBarOpen ? 'ml-[16%] w-[84%] duration-300' : 'ml-0 w-screen'}`}
     >
       {children}
     </div>
