@@ -1,33 +1,42 @@
+'use client'
+import { useRouter, useSearchParams } from 'next/navigation'
 import React from 'react'
 
 type ButtonProps = {
   text: string
-  onClick: () => void
+  link: string
   disabled?: boolean
-  color?: 'main-blue' | 'deep-blue' | 'light-blue' | 'dark-blue' | 'button-white'
+  onClick?: () => void
 }
 
-const Button = ({ text, onClick, disabled = false, color = 'main-blue' }: ButtonProps) => {
-  const baseClasses =
-    'px-4 py-2 rounded-md text-white font-bold focus:outline-none focus:ring-2 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors duration-200 ease-in-out'
+const SetButton = ({ text, link, disabled = false, onClick }: ButtonProps) => {
+  const router = useRouter()
+  const searchParams = useSearchParams()
 
-  const colorClasses = {
-    'main-blue': 'bg-main-blue hover:bg-custom_light-blue focus:ring-main-blue',
-    'deep-blue': 'bg-deep-blue hover:bg-custom_dark-blue focus:ring-deep-blue',
-    'light-blue': 'bg-custom_light-blue hover:bg-main-blue focus:ring-light-blue',
-    'dark-blue': 'bg-custom_dark-blue hover:bg-main-blue focus:ring-dark-blue',
-    'button-white': 'bg-white hover:bg-custom_light-blue focus:ring-dark-blue',
+  const handleClick = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault()
+    const query = new URLSearchParams(searchParams)
+
+    query.forEach((value, key) => {
+      sessionStorage.setItem(key, decodeURIComponent(value))
+    })
+
+    if (onClick) {
+      onClick()
+    }
+
+    router.push(link)
   }
 
   return (
     <button
-      className={`${baseClasses} ${colorClasses[color]}`}
+      className="mt-8 rounded bg-white px-4 py-2 font-semibold text-[#0369a1] shadow-lg duration-300 hover:translate-y-1 hover:bg-sky-500 hover:text-white"
       disabled={disabled}
-      onClick={onClick}
+      onClick={handleClick}
     >
       {text}
     </button>
   )
 }
 
-export default Button
+export default SetButton

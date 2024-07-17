@@ -15,7 +15,7 @@ export default async function MyPage() {
   const userName = session?.user?.name ?? 'User'
 
   return (
-    <div className="flex flex-col items-center justify-center">
+    <div className="flex pt-10 flex-col items-center justify-center">
       <h1 className="mb-8 text-xl font-bold">マイページ</h1>
       <UserCard initialUserName={userName} sampleUser={sample_user} />
     </div>

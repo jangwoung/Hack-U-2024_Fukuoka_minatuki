@@ -1,3 +1,4 @@
+'use client'
 import { useRouter, useSearchParams } from 'next/navigation'
 import { useState, useEffect, ChangeEvent } from 'react'
 
@@ -14,15 +15,16 @@ export default function SetTitle() {
   useEffect(() => {
     if (title) {
       const currentPath = window.location.pathname
-      const query = new URLSearchParams({ title }).toString()
-      const newUrl = `${currentPath}?${query}`
+      const query = new URLSearchParams(searchParams)
+      query.set('title', title)
+      const newUrl = `${currentPath}?${query.toString()}`
       try {
         router.replace(newUrl, { scroll: false })
       } catch (err) {
         console.error('Failed to update URL:', err)
       }
     }
-  }, [title, router])
+  }, [title, router, searchParams])
 
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setTitle(e.target.value)
