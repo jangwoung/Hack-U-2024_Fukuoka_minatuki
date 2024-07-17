@@ -1,3 +1,4 @@
+'use client'
 import { DatePicker, TimePicker } from '@mui/x-date-pickers'
 import dayjs, { Dayjs } from 'dayjs'
 import { useRouter, useSearchParams } from 'next/navigation'

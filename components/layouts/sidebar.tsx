@@ -42,7 +42,7 @@ export default function SideBar() {
           </Link>
           <Link href={'/host'}>
             <div className="ml-1 flex h-20 items-center justify-start font-bold duration-300 hover:text-deep-blue">
-              <EditCalendarIcon className="m-2 size-6 hover:m-1 hover:size-8" />
+              <EditCalendarIcon className="m-2 size-6" />
               <h1 className="ml-2">
                 ハッカソンを
                 <br />
