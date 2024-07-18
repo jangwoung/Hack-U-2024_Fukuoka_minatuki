@@ -1,5 +1,4 @@
 'use client'
-
 import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import SyncIcon from '@mui/icons-material/Sync'
 import { useState } from 'react'
@@ -8,6 +7,7 @@ import { NFT } from '@/features/types'
 
 import ImagePlacer from './ImagePlacer'
 import styles from './Mypage.module.css'
+import SetWallet from './SetWallet'
 
 type Props = {
   initialUserName: string
@@ -16,9 +16,10 @@ type Props = {
     uses_technology: string[]
   }
   select: NFT | null
+  userId: string
 }
 
-export default function ClientPage({ initialUserName, sampleUser, select }: Props) {
+export default function ClientPage({ initialUserName, sampleUser, select, userId }: Props) {
   const [isFlipped, setIsFlipped] = useState(false)
 
   const handleFlip = () => {
@@ -38,6 +39,8 @@ export default function ClientPage({ initialUserName, sampleUser, select }: Prop
               <div className="my-4 text-3xl font-bold">Hack Level: {sampleUser.hack_level}</div>
               <div>使用技術: {sampleUser.uses_technology.join(', ')}</div>
             </div>
+
+            <SetWallet userId={userId} />
           </div>
         </div>
         {/* card back */}
