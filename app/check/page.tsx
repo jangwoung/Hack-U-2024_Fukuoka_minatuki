@@ -160,7 +160,6 @@ export default function Mint() {
               )}
             </div>
           </div>
-
           <SetButton link="/" text="登録" onClick={saveToSupabase} />
         </div>
       </div>
