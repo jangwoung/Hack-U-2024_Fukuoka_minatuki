@@ -1,23 +1,50 @@
+import { redirect } from 'next/navigation'
+
 import { auth } from '@/auth'
+import { NFT } from '@/features/types'
 
-import UserCard from './components/UserCard'
+import ClientMyPage from './components/client'
 
-const sample_user = {
-  username: 'kitahara masao',
-  hack_level: 17,
-  uses_technology: ['Next.js', 'Go', 'Java', 'Rust'],
-  history: ['ハッカソン１', 'ハッカソン２'],
-}
+const sampleNFT: NFT[] = [
+  {
+    title: 'NFT Name1',
+    description: 'Description of NFT1',
+    file_fields: [
+      {
+        key: 'image',
+        url: 'https://kglodrpqgrblwepcdmvf.supabase.co/storage/v1/object/public/NFT_img/Hack_U_Fukuoka_NFT-1.png',
+      },
+    ],
+  },
+  {
+    title: 'NFT Name2',
+    description: 'Description of NFT2',
+    file_fields: [
+      {
+        key: 'image',
+        url: 'https://kglodrpqgrblwepcdmvf.supabase.co/storage/v1/object/public/NFT_img/Hack_U_Fukuoka_NFT-2.png',
+      },
+    ],
+  },
+  {
+    title: 'NFT Name3',
+    description: 'Description of NFT3',
+    file_fields: [
+      {
+        key: 'image',
+        url: 'https://kglodrpqgrblwepcdmvf.supabase.co/storage/v1/object/public/NFT_img/Hack_U_Fukuoka_NFT-3.png',
+      },
+    ],
+  },
+]
 
 export default async function MyPage() {
-  /* eslint-disable */
   const session = await auth()
-  const userName = session?.user?.name ?? 'User'
 
-  return (
-    <div className="flex pt-10 flex-col items-center justify-center">
-      <h1 className="mb-8 text-xl font-bold">マイページ</h1>
-      <UserCard initialUserName={userName} sampleUser={sample_user} />
-    </div>
-  )
+  if (!session) {
+    redirect('/')
+  }
+
+  const username = session.user.name || 'ゲスト'
+  return <div>{session && <ClientMyPage nft={sampleNFT} user={username} />}</div>
 }

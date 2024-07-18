@@ -4,6 +4,9 @@ import AccountCircleIcon from '@mui/icons-material/AccountCircle'
 import SyncIcon from '@mui/icons-material/Sync'
 import { useState } from 'react'
 
+import { NFT } from '@/features/types'
+
+import ImagePlacer from './ImagePlacer'
 import styles from './Mypage.module.css'
 
 type Props = {
@@ -12,9 +15,10 @@ type Props = {
     hack_level: number
     uses_technology: string[]
   }
+  select: NFT | null
 }
 
-export default function ClientPage({ initialUserName, sampleUser }: Props) {
+export default function ClientPage({ initialUserName, sampleUser, select }: Props) {
   const [isFlipped, setIsFlipped] = useState(false)
 
   const handleFlip = () => {
@@ -23,7 +27,7 @@ export default function ClientPage({ initialUserName, sampleUser }: Props) {
 
   return (
     <div className={styles.card}>
-      <div className={`${styles.content} ${isFlipped && styles.flipped}`}>
+      <div className={`${styles.content} ${isFlipped ? styles.flipped : ''}`}>
         {/* card front */}
         <div className={styles.front}>
           <div className="flex h-full flex-col items-center justify-center p-4">
@@ -38,9 +42,8 @@ export default function ClientPage({ initialUserName, sampleUser }: Props) {
         </div>
         {/* card back */}
         <div className={styles.back}>
-          <div className={styles.inner}>
-            <SyncIcon className="absolute right-4 top-4 cursor-pointer" onClick={handleFlip} />
-          </div>
+          <ImagePlacer selectedNft={select} />
+          <SyncIcon className="absolute right-4 top-4 cursor-pointer" onClick={handleFlip} />
         </div>
       </div>
     </div>
