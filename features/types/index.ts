@@ -9,8 +9,20 @@ export interface Hackathon {
   creator_uid: string
   title: string
   place: string
-  kick_off_date: string // ISO 8601形式の文字列
-  prezen_date: string // ISO 8601形式の文字列
+  kick_off_date: string
+  prezen_date: string
   description: string
-  created_at: string // ISO 8601形式の文字列
+  created_at: string
+}
+
+export interface NFT {
+  title: string
+  description: string
+  file_fields: { key: string; url: string }[]
+}
+
+export interface SelectNftProps {
+  select: NFT | null
+  setSelect: (nft: NFT) => void
+  sampleNFT: NFT[]
 }
