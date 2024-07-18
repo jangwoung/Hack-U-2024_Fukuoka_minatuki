@@ -43,8 +43,15 @@ export default async function MyPage() {
 
   if (!session) {
     redirect('/')
+    return null
+  }
+
+  const userId = session.user.id
+  if (!userId) {
+    redirect('/')
+    return null
   }
 
   const username = session.user.name || 'ゲスト'
-  return <div>{session && <ClientMyPage nft={sampleNFT} user={username} />}</div>
+  return <div>{session && <ClientMyPage nft={sampleNFT} user={username} userId={userId} />}</div>
 }
