@@ -2,19 +2,19 @@ import style from './Join.module.css'
 
 export default function Join() {
   return (
-    <div>
-      <div className={style.back}>
-        <button className={style.button}></button>
-        <div>
-          <footer>
+    <div className={style.back}>
+      <button className={style.button}></button>
+      <div className={style.main}>
+        <header>
+          <div className={style.detail}>
             <ul>
-              <li>ハッカソンレベル</li>
-              <li>日時</li>
-              <li>場所</li>
-              <li>説明</li>
+              <li>Hackson Level・・・ 17</li>
+              <li>Day・・・・・・・・・1/2</li>
+              <li>Venue・・・・・・・・GYMラボ</li>
+              <li>Explanation・・・・初心者大歓迎です！</li>
             </ul>
-          </footer>
-        </div>
+          </div>
+        </header>
       </div>
     </div>
   )
