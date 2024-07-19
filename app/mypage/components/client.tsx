@@ -8,8 +8,8 @@ import UserCard from './UserCard'
 
 const sample_user = {
   username: 'kitahara masao',
-  hack_level: 17,
-  uses_technology: ['Next.js', 'Go', 'Java', 'Rust'],
+  hack_level: 20,
+  uses_technology: ['TypeScript', 'Go', 'Java', 'Rust'],
   history: ['ハッカソン１', 'ハッカソン２'],
 }
 

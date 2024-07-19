@@ -17,6 +17,7 @@ interface Data {
   nftTitle: string
   nftDescription: string
   uploadedImage: string
+  level: number // ここにlevelを追加
 }
 
 export default function Mint() {
@@ -31,6 +32,7 @@ export default function Mint() {
     nftTitle: '',
     nftDescription: '',
     uploadedImage: '',
+    level: 0, // 初期値にlevelを追加
   })
 
   useEffect(() => {
@@ -44,6 +46,7 @@ export default function Mint() {
     const nftTitle = sessionStorage.getItem('nftTitle') || ''
     const nftDescription = sessionStorage.getItem('nftDescription') || ''
     const uploadedImage = sessionStorage.getItem('uploadedImage') || ''
+    const level = Number(sessionStorage.getItem('level')) || 0 // ここにlevelの読み込みを追加
 
     setData({
       title,
@@ -56,6 +59,7 @@ export default function Mint() {
       nftTitle,
       nftDescription,
       uploadedImage,
+      level, // stateにlevelを設定
     })
   }, [])
 
@@ -80,6 +84,7 @@ export default function Mint() {
         nftTitle: '',
         nftDescription: '',
         uploadedImage: '',
+        level: 0, // データクリア時にlevelをリセット
       })
     }
   }
@@ -94,35 +99,36 @@ export default function Mint() {
 
           <div className="mb-8 mt-6 flex w-[48vw] flex-col justify-center rounded-md bg-white p-8 font-bold">
             <h1 className="mb-4 text-center">基本情報</h1>
-
             <h1 className="text-sm text-gray-600">タイトル</h1>
             <div className="relative mb-8 flex items-center">
               <h1 className="mx-4 w-full rounded-md px-4 py-1 text-left text-2xl text-base-black outline-main-blue">
                 {data.title}
               </h1>
             </div>
-
+            <h1 className="text-sm text-gray-600">レベル</h1> {/* レベルの表示を追加 */}
+            <div className="relative mb-8 flex items-center">
+              <h1 className="mx-4 w-full rounded-md px-4 py-1 text-left text-2xl text-base-black outline-main-blue">
+                {data.level}
+              </h1>
+            </div>
             <h1 className="text-sm text-gray-600">場所</h1>
             <div className="relative mb-8 flex items-center">
               <h1 className="mx-4 w-full rounded-md px-4 py-1 text-left text-2xl text-base-black outline-main-blue">
                 {data.place}
               </h1>
             </div>
-
             <h1 className="text-sm text-gray-600">説明</h1>
             <div className="relative mb-8 flex items-center">
               <h1 className="mx-4 w-full rounded-md px-4 py-1 text-left text-2xl text-base-black outline-main-blue">
                 {data.description}
               </h1>
             </div>
-
             <h1 className="text-sm text-gray-600">発表の日時</h1>
             <div className="relative mb-8 flex items-center">
               <h1 className="mx-4 w-full rounded-md px-4 py-1 text-left text-2xl text-base-black outline-main-blue">
                 {data.prezenDate} {data.prezenTime}
               </h1>
             </div>
-
             <h1 className="text-sm text-gray-600">キックオフの日時</h1>
             <div className="relative mb-8 flex items-center">
               <h1 className="mx-4 w-full rounded-md px-4 py-1 text-left text-2xl text-base-black outline-main-blue">

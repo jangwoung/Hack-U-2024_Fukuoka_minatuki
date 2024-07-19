@@ -16,7 +16,7 @@ export default function HeaderClient({ UserName }: Props) {
     <div className="fixed top-0 z-40 grid h-[64px] w-svw grid-cols-12 items-center gap-5 bg-white shadow-sm">
       <div className="col-span-2 text-center text-2xl">
         <Link href="/">
-          <h1>LOGO</h1>
+          <h1>W&Hack</h1>
         </Link>
       </div>
       <div className="col-span-2 col-start-11 text-center">

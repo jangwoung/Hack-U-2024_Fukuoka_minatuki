@@ -6,13 +6,18 @@ export interface SimpleHackathonInfo {
 
 export interface Hackathon {
   id: number
-  creator_uid: string
   title: string
   place: string
-  kick_off_date: string
-  prezen_date: string
+  kickOffDate: string
+  kickOffTime: string
+  prezenDate: string
+  prezenTime: string
   description: string
   created_at: string
+  nftTitle: string
+  nftDescription: string
+  participant: JSON
+  level: number
 }
 
 export interface NFT {
