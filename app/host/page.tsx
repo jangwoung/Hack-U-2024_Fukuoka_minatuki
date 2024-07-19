@@ -3,6 +3,7 @@ import SetButton from '@/components/elements/Button'
 import ClientHost from './ClientHost'
 import SetDate from './components/SetDate'
 import SetDescription from './components/SetDescription'
+import SetLevel from './components/SetLevel'
 import SetPlace from './components/SetPlace'
 import SetTitle from './components/SetTitle'
 
@@ -15,6 +16,7 @@ export default function Host() {
           <h1 className="text-xl">開催情報</h1>
           <ClientHost>
             <SetTitle />
+            <SetLevel />
             <SetPlace />
             <SetDate />
             <SetDescription />
