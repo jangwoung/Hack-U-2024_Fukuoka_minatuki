@@ -12,10 +12,11 @@ interface ImagePosition {
   y: number
   id: string
   url: string
+  nftTitle: string
 }
 
 export default function ImagePlacer({ selectedNft }: ImagePlacerProps) {
-  const [image, setImage] = useState<ImagePosition | null>(null)
+  const [images, setImages] = useState<ImagePosition[]>([])
 
   const handleClick = (e: React.MouseEvent<HTMLDivElement>) => {
     if (!selectedNft || !selectedNft.file_fields || !selectedNft.file_fields[0]) return
@@ -26,12 +27,24 @@ export default function ImagePlacer({ selectedNft }: ImagePlacerProps) {
     const id = `${x}-${y}-${Date.now()}`
     const url = selectedNft.file_fields[0].url
 
-    setImage({ x, y, id, url })
+    setImages((prevImages) => {
+      const existingImageIndex = prevImages.findIndex(
+        (image) => image.nftTitle === selectedNft.title,
+      )
+
+      if (existingImageIndex !== -1) {
+        const updatedImages = [...prevImages]
+        updatedImages[existingImageIndex] = { x, y, id, url, nftTitle: selectedNft.title }
+        return updatedImages
+      } else {
+        return [...prevImages, { x, y, id, url, nftTitle: selectedNft.title }]
+      }
+    })
   }
 
   return (
     <div onClick={handleClick} style={{ width: '100%', height: '100%', position: 'relative' }}>
-      {image && (
+      {images.map((image) => (
         <Image
           alt="Placed"
           height={100}
@@ -45,7 +58,7 @@ export default function ImagePlacer({ selectedNft }: ImagePlacerProps) {
           }}
           width={100}
         />
-      )}
+      ))}
     </div>
   )
 }

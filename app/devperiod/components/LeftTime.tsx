@@ -53,7 +53,7 @@ export default function LeftTime({ Hackathondata }: { Hackathondata: Hackathon[]
       const calculatedTimeLeft = calculateTimeLeft()
       setTimeLeft(calculatedTimeLeft)
       if (calculatedTimeLeft === null) {
-        router.push('/vote')
+        router.push(`/vote?id=${id}`)
       }
     }
 
